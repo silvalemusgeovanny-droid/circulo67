@@ -1,0 +1,13 @@
+{
+  "name": "materialq",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MaterialQ beta procurement intelligence dashboard.",
+  "scripts": {
+    "dev": "node server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "@composio/core": "^0.16.0"
+  }
+}
