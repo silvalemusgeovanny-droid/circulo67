@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MaterialQ Beta</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#app" aria-label="MaterialQ home">
+        <span class="brand-mark" aria-hidden="true">MQ</span>
+        <span>
+          <strong>MaterialQ</strong>
+          <small>Procurement Intelligence Beta</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#how">Qué hacemos</a>
+        <a href="#app">Analizar</a>
+        <a href="#sources">Fuentes</a>
+      </nav>
+      <button class="lang-toggle" id="languageToggle" type="button">EN</button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="beta-pill" data-i18n="betaPill">Beta privada</span>
+          <h1 data-i18n="heroTitle">Diagnóstico inteligente para compras de materia prima.</h1>
+          <p data-i18n="heroText">
+            MaterialQ compara proveedores, filtra riesgos y genera reportes claros para decidir con mejor precio, calidad y evidencia.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#app" data-i18n="startAnalysis">Iniciar análisis</a>
+            <a class="telegram-action" id="heroTelegramButton" href="https://t.me/circulo67_bot?start=materialq" target="_blank" rel="noreferrer" data-i18n="telegramHeroButton">Abrir Telegram</a>
+            <a class="secondary-action" href="#how" data-i18n="learnMore">Ver funcionamiento</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="MaterialQ analytics preview">
+          <div class="radar-panel">
+            <div class="radar-grid"></div>
+            <div class="radar-sweep"></div>
+            <div class="supplier-dot dot-a"></div>
+            <div class="supplier-dot dot-b"></div>
+            <div class="supplier-dot dot-c"></div>
+          </div>
+          <div class="metric-strip">
+            <span data-i18n="quality">Calidad</span>
+            <strong>92</strong>
+            <span data-i18n="price">Precio</span>
+            <strong>87</strong>
+            <span data-i18n="risk">Riesgo</span>
+            <strong>Bajo</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <div class="section-heading">
+          <p data-i18n="whatWeDoEyebrow">Qué hacemos</p>
+          <h2 data-i18n="whatWeDoTitle">Una beta para investigar, comparar y reportar compras con más control.</h2>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <span>01</span>
+            <h3 data-i18n="featureOneTitle">Diagnóstico de proveedores</h3>
+            <p data-i18n="featureOneText">Detecta reputación débil, stock incierto, precios altos y señales de baja calidad.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3 data-i18n="featureTwoTitle">Optimización calidad-precio</h3>
+            <p data-i18n="featureTwoText">Prioriza opciones con buena evidencia, costo competitivo y distancia compatible.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3 data-i18n="featureThreeTitle">Reporte accionable</h3>
+            <p data-i18n="featureThreeText">Prepara un PDF con fuentes, descartes, recomendación y próximos pasos.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="workspace" id="app">
+        <aside class="control-panel">
+          <div class="panel-title">
+            <p data-i18n="analysisPanel">Panel de análisis</p>
+            <h2 data-i18n="requestTitle">Nueva búsqueda</h2>
+          </div>
+          <form id="analysisForm">
+            <label>
+              <span data-i18n="productLabel">Producto o materia prima</span>
+              <input id="product" name="product" required placeholder="Acero inoxidable 304" />
+            </label>
+            <div class="two-cols">
+              <label>
+                <span data-i18n="quantityLabel">Cantidad</span>
+                <input id="quantity" name="quantity" required placeholder="500 kg" />
+              </label>
+              <label>
+                <span data-i18n="dateLabel">Fecha de entrega</span>
+                <input id="deliveryDate" name="deliveryDate" type="date" required />
+              </label>
+            </div>
+            <label>
+              <span data-i18n="locationLabel">Ubicación base</span>
+              <input id="location" name="location" required placeholder="Guadalajara, México" />
+            </label>
+            <div class="two-cols">
+              <label>
+                <span data-i18n="distanceLabel">Distancia máxima</span>
+                <input id="distance" name="distance" required placeholder="350 km" />
+              </label>
+              <label>
+                <span data-i18n="emailLabel">Correo destino</span>
+                <input id="email" name="email" type="email" required placeholder="compras@empresa.com" />
+              </label>
+            </div>
+            <label>
+              <span data-i18n="notesLabel">Requisitos adicionales</span>
+              <textarea id="notes" name="notes" rows="4" placeholder="Certificaciones, tolerancias, empaque, proveedores preferidos..."></textarea>
+            </label>
+            <button class="primary-button" type="submit" data-i18n="runAnalysis">Analizar compra</button>
+          </form>
+          <section class="history-panel" aria-live="polite">
+            <div class="history-header">
+              <div>
+                <p data-i18n="historyEyebrow">Memoria del cliente</p>
+                <h3 data-i18n="historyTitle">Historial por correo</h3>
+              </div>
+            </div>
+            <div class="pin-row">
+              <button class="secondary-button" id="requestPinButton" type="button" data-i18n="requestPinButton">Enviar PIN</button>
+              <input id="historyPin" inputmode="numeric" maxlength="6" placeholder="PIN" aria-label="PIN de historial" />
+              <button class="secondary-button" id="verifyPinButton" type="button" data-i18n="verifyPinButton">Verificar</button>
+            </div>
+            <button class="secondary-button history-open-button" id="historyButton" type="button" data-i18n="historyButton" disabled>Ver historial</button>
+            <div class="history-list" id="historyList">
+              <p data-i18n="historyEmpty">Ingresa un correo y solicita un PIN para consultar análisis anteriores.</p>
+            </div>
+          </section>
+        </aside>
+
+        <section class="results-panel" aria-live="polite">
+          <div class="results-header">
+            <div>
+              <p data-i18n="agentOutput">Salida del agente</p>
+              <h2 id="reportTitle" data-i18n="emptyTitle">Esperando parámetros</h2>
+            </div>
+            <div class="status-chip" id="statusChip" data-i18n="betaReady">Beta lista</div>
+          </div>
+
+          <div class="score-row">
+            <div>
+              <span data-i18n="qualityScore">Calidad</span>
+              <strong id="qualityScore">--</strong>
+            </div>
+            <div>
+              <span data-i18n="priceScore">Precio</span>
+              <strong id="priceScore">--</strong>
+            </div>
+            <div>
+              <span data-i18n="supplierRisk">Riesgo</span>
+              <strong id="riskScore">--</strong>
+            </div>
+            <div>
+              <span data-i18n="stockStatus">Stock</span>
+              <strong id="stockScore">--</strong>
+            </div>
+          </div>
+
+          <div class="report-grid">
+            <article class="insight-block">
+              <h3 data-i18n="recommendation">Recomendación</h3>
+              <p id="recommendationText" data-i18n="emptyRecommendation">Ingresa los datos de compra para generar el diagnóstico.</p>
+            </article>
+            <article class="insight-block">
+              <h3 data-i18n="discarded">Opciones descartadas</h3>
+              <ul id="discardList">
+                <li data-i18n="emptyDiscard">Aún no hay análisis.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th data-i18n="supplier">Proveedor</th>
+                  <th data-i18n="fit">Ajuste</th>
+                  <th data-i18n="price">Precio</th>
+                  <th data-i18n="evidence">Evidencia</th>
+                </tr>
+              </thead>
+              <tbody id="supplierTable">
+                <tr>
+                  <td colspan="4" data-i18n="emptyTable">Los proveedores aparecerán aquí.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="action-bar">
+            <button class="secondary-button" id="pdfButton" type="button" data-i18n="pdfButton">Descargar PDF</button>
+            <button class="secondary-button" id="emailButton" type="button" data-i18n="emailButton">Enviar al correo</button>
+            <button class="secondary-button" id="telegramButton" type="button" data-i18n="telegramButton">Abrir bot de Telegram</button>
+          </div>
+          <p class="confirmation-note" id="confirmationNote" data-i18n="confirmationNote">
+            Las acciones externas se preparan primero y requieren confirmación antes de enviarse.
+          </p>
+        </section>
+      </section>
+
+      <section class="section sources" id="sources">
+        <div class="section-heading">
+          <p data-i18n="integrationsEyebrow">Ecosistema empresarial</p>
+          <h2 data-i18n="integrationsTitle">Una capa de inteligencia para compras con trazabilidad, evidencia y control humano.</h2>
+        </div>
+        <div class="integration-row">
+          <article>
+            <span class="module-kicker">Market Intel</span>
+            <strong data-i18n="marketIntelTitle">Investigación de mercado</strong>
+            <p data-i18n="exaText">Localiza proveedores, evidencia pública, señales de stock y referencias de cotización con fuentes verificables.</p>
+          </article>
+          <article>
+            <span class="module-kicker">Knowledge Base</span>
+            <strong data-i18n="traceabilityTitle">Trazabilidad operativa</strong>
+            <p data-i18n="notionText">Conserva historial por correo, decisiones, reportes, proveedores evaluados y memoria comercial reutilizable.</p>
+          </article>
+          <article>
+            <span class="module-kicker">Workflow Control</span>
+            <strong data-i18n="workflowTitle">Ejecución controlada</strong>
+            <p data-i18n="composioText">Prepara correos, archivos y flujos de seguimiento sin enviar nada sensible hasta recibir confirmación.</p>
+          </article>
+          <article>
+            <span class="module-kicker">Executive Channel</span>
+            <strong data-i18n="channelTitle">Canal de seguimiento</strong>
+            <p data-i18n="telegramText">Permite consultas rápidas sobre análisis, proveedores y próximos pasos desde un bot autorizado.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>MaterialQ Beta</span>
+      <span data-i18n="footerText">Procurement intelligence with human confirmation.</span>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
